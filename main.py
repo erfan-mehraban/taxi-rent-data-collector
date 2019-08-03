@@ -1,3 +1,4 @@
+from datetime import datetime
 import schedule
 from collector import PriceManipulator
 from config import start_cordinate, dest_cordinate, tap30_token, snapp_token, get_price_intervals
@@ -12,12 +13,17 @@ pm.add_app(Snapp, snapp_token)
 pm.add_app(Tap30, tap30_token)
 
 def collect_prices():
-    try:
-        app_price = pm.get_all_prices(start_cordinate, dest_cordinate)
-        for app_name, price in app_price.items():
-            save_record(app_name, price)
-    except Exception as e:
-        print(e)
+    error_occurred = True
+    while error_occurred:
+        try:
+            app_price = pm.get_all_prices(start_cordinate, dest_cordinate)
+            for app_name, price in app_price.items():
+                print(datetime.now().strftime("%H:%M"), app_name, price)
+                save_record(app_name, price)
+            error_occurred = False
+        except Exception as e:
+            print(e)
+            error_occurred = True
 
 # schedule
 schedule.every(get_price_intervals).minutes.do(collect_prices)
