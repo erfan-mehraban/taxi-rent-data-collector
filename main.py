@@ -1,6 +1,6 @@
 import schedule
 from collector import PriceManipulator
-from config import *
+from config import start_cordinate, dest_cordinate, tap30_token, snapp_token, get_price_intervals
 from data_store import save_record
 from tap30 import Tap30
 from snapp import Snapp
@@ -20,7 +20,7 @@ def collect_prices():
         print(e)
 
 # schedule
-schedule.every(30).minutes.do(collect_prices)
+schedule.every(get_price_intervals).minutes.do(collect_prices)
 while True:
     schedule.run_pending()
     sleep(1)
