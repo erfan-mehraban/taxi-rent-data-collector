@@ -1,7 +1,5 @@
-from config import result_store_path
 from datetime import datetime
-def save_record(service_alias: str, price: int):
-    path = result_store_path[service_alias]
+def save_record(price: int, path: str):
     with open(path, 'a') as fh:
         dt = datetime.now().strftime("%d-%m-%Y %H:%M")
         week_day = datetime.now().strftime("%a")

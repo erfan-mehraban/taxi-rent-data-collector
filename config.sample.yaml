@@ -1,0 +1,12 @@
+result_store_path:
+    tap30: ./tap30.csv
+    snapp: ./snapp.csv
+
+
+start_cordinate: [35, 51]
+dest_cordinate: [36, 52]
+
+snapp_token: 
+tap30_token: 
+
+get_price_intervals: 30 # in minutes
