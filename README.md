@@ -11,7 +11,7 @@ pip3 install schedule requests
 
 2. Get your token from snapp and tap30 web app. You can use chrome inscpect packets for this purpose. (Unfortunately this feauture doesnt implemented.)
 
-3. Create `config.py` from `config.py.sample`
+3. Create `config.yaml` from `config.sample.yaml`
 
 4.
 ```bash
